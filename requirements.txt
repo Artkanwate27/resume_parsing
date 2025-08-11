@@ -1,0 +1,10 @@
+streamlit
+pypdf2
+pdfplumber
+# spacy
+nltk
+sentence-transformers
+python-dotenv
+fastapi
+uvicorn
+sqlalchemy  
