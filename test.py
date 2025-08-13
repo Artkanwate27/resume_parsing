@@ -1,21 +1,22 @@
 import streamlit as st
-import numpy as np
-import os
-import shutil
 
 opt_select = st.selectbox(
     "Please select from one of the options",
-    ("Abs", "Bgf")
+    ("Upload Resume", "Use Dummy Resume")
 )
 
-if opt_select!="Upload":
+if opt_select == "Upload Resume":
     with st.form("upload-form", clear_on_submit=True):
-        st.write("New created.")
-        uploaded_file = st.file_uploader("Upload text file", type=["txt"])
-        submitted= st.form_submit_button()
-        print("AAA",uploaded_file)
-        if uploaded_file is not None:
-            st.write("Success.")
+        st.write("Please upload your resume (PDF format).")
+        uploaded_file = st.file_uploader("Upload resume", type=["pdf"])
+        submitted = st.form_submit_button("Submit")
+        
+        if submitted:
+            if uploaded_file is not None:
+                st.success("Resume uploaded successfully!")
+            else:
+                st.warning("Please select a file before submitting.")
 
-        else:
-            st.warning("No Selection")
+elif opt_select == "Use Dummy Resume":
+    st.write("Using preloaded dummy resume for testing.")
+    # yahan tum dummy_resume.pdf ka path use kar sakte ho
